@@ -1,21 +1,24 @@
-#include "MyStack.h"
+/*#include "MyStack.h"
 #include "Coordinate.h"
 #include <iostream>
 
-MyStack::MyStack(int size)
+template <typename T>
+MyStack<T>::MyStack(int size)
 {
     m_iSize = size;
-    m_pBuffer = new Coordinate[m_iSize]; 
+    m_pBuffer = new T[m_iSize]; 
     m_iTop = 0;
 }
 
-MyStack::~MyStack()
+template <typename T>
+MyStack<T>::~MyStack()
 {
     delete []m_pBuffer;
     m_pBuffer = NULL;
 }
 
-bool MyStack::stackEmpty()
+template <typename T>
+bool MyStack<T>::stackEmpty()
 {
     if (0 == m_iTop) {
         return true;
@@ -24,7 +27,8 @@ bool MyStack::stackEmpty()
     }
 }
 
-bool MyStack::stackFull()
+template <typename T>
+bool MyStack<T>::stackFull()
 {
     if (m_iTop == m_iSize) {
         return true;
@@ -33,12 +37,14 @@ bool MyStack::stackFull()
     }
 }
 
-int MyStack::stackLength()
+template <typename T>
+int MyStack<T>::stackLength()
 {
     return m_iTop;
 }
 
-bool MyStack::push(Coordinate elem)
+template <typename T>
+bool MyStack<T>::push(T elem)
 {
     if (!stackFull()) {
         m_pBuffer[m_iTop] = elem;
@@ -49,7 +55,8 @@ bool MyStack::push(Coordinate elem)
     }
 }
 
-bool MyStack::pop(Coordinate &elem)
+template <typename T>
+bool MyStack<T>::pop(T &elem)
 {
     if (!stackEmpty()) {
         m_iTop--;
@@ -60,10 +67,11 @@ bool MyStack::pop(Coordinate &elem)
     }
 }
 
-void MyStack::stackTraverse()
+template <typename T>
+void MyStack<T>::stackTraverse()
 {
     for (int i = 0; i < m_iTop; i++) {
         cout << m_pBuffer[i];
     }
 }
-
+*/

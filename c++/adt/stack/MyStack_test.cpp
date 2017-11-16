@@ -5,7 +5,7 @@ using namespace std;
 
 int main(void)
 {
-    MyStack *pStack = new MyStack(5);
+    MyStack<Coordinate> *pStack = new MyStack<Coordinate>(5);
 
     pStack->stackTraverse();
 
@@ -35,6 +35,18 @@ int main(void)
 
     delete pStack;
     pStack = NULL;
+
+    MyStack<char> *pChar = new MyStack<char>(5);
+    pChar->push('a');
+    pChar->push('b');
+    pChar->push('c');
+
+    pChar->stackTraverse();
+    cout << endl;
+    cout << pChar->stackLength() << endl;
+
+    delete pChar;
+    pChar = NULL;
 
     return 0;
 }
