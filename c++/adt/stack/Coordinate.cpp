@@ -12,3 +12,9 @@ void Coordinate::printInfo()
 {
     cout << "(" << m_iX << ", " << m_iY << ")" << endl;
 }
+
+ostream &operator<<(ostream &out, Coordinate &c)
+{
+    out << c.m_iX << ", " << c.m_iY << endl;
+    return out;
+}

@@ -63,7 +63,7 @@ bool MyStack::pop(Coordinate &elem)
 void MyStack::stackTraverse()
 {
     for (int i = 0; i < m_iTop; i++) {
-        m_pBuffer[i].printInfo();
+        cout << m_pBuffer[i];
     }
 }
 

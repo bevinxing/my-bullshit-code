@@ -28,6 +28,7 @@ int main(void)
     pStack->pop(c);
 
     cout << pStack->stackLength() << endl;
+    cout << c;
     c.printInfo();
 
     pStack->stackTraverse();
