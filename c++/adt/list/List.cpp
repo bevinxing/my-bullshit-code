@@ -89,14 +89,18 @@ void List::ListTraverse()
     }
 }
 
+/* i is in the range of 0~length.
+   0 - insert after the head.
+   length - insert after the tail.
+*/
 bool List::ListInsert(int i, Node *pNode)
 {
-    if (i <= 0 || i > m_iLength) {
+    if (i < 0 || i > m_iLength) {
         return false;
     }
     
     Node *currentNode = m_pList;
-    while (--i > 0) {
+    while (i-- > 0) {
         currentNode = currentNode->pNext;
     }
 
@@ -113,14 +117,18 @@ bool List::ListInsert(int i, Node *pNode)
     return true;
 }
 
+/* i is in the range of 0~length-1
+   0 - delete the first node
+   length-1 - delete the last node
+*/
 bool List:: ListDelete(int i, Node *pNode)
 {
-    if (i <= 0 || i > m_iLength) {
+    if (i < 0 || i >= m_iLength) {
         return false;
     }
 
     Node *currentNode = m_pList;
-    while (--i > 0) {
+    while (i-- > 0) {
         currentNode = currentNode->pNext;
     }
 
