@@ -12,6 +12,8 @@ public:
     bool ListEmpty();
     int ListLength();
     void ListTraverse();
+    bool ListInsert(int i, Node *pNode);
+    bool ListDelete(int i, Node *pNode);
     bool ListInsertHead(Node *pNode);
     bool ListInsertTail(Node *pNode);
 private:

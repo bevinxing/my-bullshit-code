@@ -33,6 +33,15 @@ void List::ClearList()
     m_iLength = 0;
 }
 
+bool List::ListEmpty()
+{
+    if (0 == m_iLength) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 int List::ListLength()
 {
     return m_iLength;
@@ -78,6 +87,52 @@ void List::ListTraverse()
         currentNode->printNode();
         currentNode = currentNode->pNext;
     }
+}
+
+bool List::ListInsert(int i, Node *pNode)
+{
+    if (i <= 0 || i > m_iLength) {
+        return false;
+    }
+    
+    Node *currentNode = m_pList;
+    while (--i > 0) {
+        currentNode = currentNode->pNext;
+    }
+
+    Node *newNode = new Node;
+    if (NULL == newNode) {
+        return false;
+    }
+
+    newNode->data = pNode->data;
+    newNode->pNext = currentNode->pNext;
+    currentNode->pNext = newNode;
+    m_iLength++;
+
+    return true;
+}
+
+bool List:: ListDelete(int i, Node *pNode)
+{
+    if (i <= 0 || i > m_iLength) {
+        return false;
+    }
+
+    Node *currentNode = m_pList;
+    while (--i > 0) {
+        currentNode = currentNode->pNext;
+    }
+
+    Node *temp = currentNode->pNext;
+    pNode->data = temp->data;
+    currentNode->pNext = temp->pNext;
+
+    delete temp;
+    temp = NULL;
+    m_iLength--;
+
+    return true;
 }
 
 
