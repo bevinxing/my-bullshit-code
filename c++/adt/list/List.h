@@ -12,6 +12,10 @@ public:
     bool ListEmpty();
     int ListLength();
     void ListTraverse();
+    bool GetElem(int i, Node *pNode);
+    int LocateElem(Node *pNode);
+    bool PriorElem(Node *pCurrentElem, Node *pPreElem);
+    bool NextElem(Node *pCurrentElem, Node *pNextElem);
     bool ListInsert(int i, Node *pNode);
     bool ListDelete(int i, Node *pNode);
     bool ListInsertHead(Node *pNode);

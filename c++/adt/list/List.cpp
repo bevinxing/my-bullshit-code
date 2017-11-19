@@ -143,4 +143,60 @@ bool List:: ListDelete(int i, Node *pNode)
     return true;
 }
 
+/* i in range of 0~length-1 */
+bool List::GetElem(int i, Node *pNode) {
+    if (i < 0 || i >= m_iLength) {
+        return false;
+    }
+    Node *currentNode = m_pList->pNext;
+    while (i-- > 0) {
+        currentNode = currentNode->pNext;
+    }
+    pNode->data = currentNode->data;
+    return true;
+}
+
+int List::LocateElem(Node *pNode) {
+    Node *currentNode = m_pList;
+    int i = 0;
+    while (currentNode->pNext) {
+        currentNode = currentNode->pNext;
+        if (currentNode->data == pNode->data)
+            return i;
+        i++;
+    }
+    return -1;
+}
+
+bool List::PriorElem(Node *pCurrentElem, Node *pPreElem) {
+    Node *currentNode = m_pList;
+    Node *preNode = NULL;
+
+    while(currentNode->pNext) {
+        preNode = currentNode;
+        currentNode = currentNode->pNext;
+        if (currentNode->data == pCurrentElem->data) {
+            if (m_pList == preNode)
+                return false;
+            pPreElem->data = preNode->data;
+            return true;
+        }
+    }
+    return false;
+}
+
+bool List::NextElem(Node *pCurrentElem, Node *pNextElem) {
+    Node *currentNode = m_pList;
+    while (currentNode->pNext) {
+        currentNode = currentNode->pNext;
+        if (currentNode->data == pCurrentElem->data) {
+            if (!currentNode->pNext) {
+                return false;
+            }
+            pNextElem->data = currentNode->pNext->data;
+            return true;
+        }
+    }
+    return true;
+}
 
