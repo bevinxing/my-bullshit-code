@@ -18,7 +18,6 @@ public:
     void PreorderTraversal();
     void InorderTraversal();
     void PostorderTraversal();
-    void DestroyTree(Node *root);
 
 private:
     Node *m_pRoot;

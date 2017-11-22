@@ -14,7 +14,7 @@ Tree::Tree() {
 }
 
 Tree::~Tree() {
-
+    m_pRoot->DeleteNode();
 }
 
 Node *Tree::SearchNode(int nodeIndex) {
@@ -35,15 +35,42 @@ bool Tree::AddNode(int nodeIndex, int direction, Node *pNode) {
 
     if (0 == direction && NULL == temp->pLChild) {
         temp->pLChild = newNode;
+        cout << "Add LChild node index: " << nodeIndex << "  " << pNode->index << endl;
         return true;
     }
 
     if (1 == direction && NULL == temp->pRChild) {
         temp->pRChild = newNode;
+        cout << "Add RChild node index: " << nodeIndex << "  " << pNode->index << endl;
         return true;
     }
 
     delete newNode;
     return false;
+}
+
+bool Tree::DeleteNode(int nodeIndex, Node *pNode) {
+    Node *temp = m_pRoot->SearchNode(nodeIndex);
+    if (NULL == temp)
+        return false;
+
+    if (NULL != pNode) {
+        pNode->data = temp->data;
+    }
+
+    temp->DeleteNode();
+    return true;
+}
+
+void Tree::PreorderTraversal() {
+    m_pRoot->PreorderTraversal();
+}
+
+void Tree::InorderTraversal() {
+    m_pRoot->InorderTraversal();
+}
+
+void Tree::PostorderTraversal() {
+    m_pRoot->PostorderTraversal();
 }
 
