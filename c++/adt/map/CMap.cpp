@@ -3,6 +3,7 @@
 //
 
 #include "CMap.h"
+#include <string.h>
 #include <iostream>
 using namespace std;
 
@@ -67,5 +68,18 @@ void CMap::printMatrix() {
 }
 
 void CMap::depthFirstTraverse(int nodeIndex) {
+    cout << m_pNodeArray[nodeIndex].m_cData << " ";
+    m_pNodeArray[nodeIndex].m_bIsVisited = true;
 
+    for (int i = 0; i < m_iCapacity; i++) {
+        int value = 0;
+        if (!m_pNodeArray[i].m_bIsVisited)
+            getValueFromMatrix(nodeIndex, i, value);
+        if (value) {
+            depthFirstTraverse(i);
+        }
+    }
 }
+
+
+
