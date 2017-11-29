@@ -56,6 +56,9 @@ int main() {
     pMap->printMatrix();
     pMap->depthFirstTraverse(0);
     cout << endl;
+    pMap->resetNode();
+    pMap->breadthFirstTraverse(0);
+    cout << endl;
 
     delete pNodeA;
     delete pNodeB;

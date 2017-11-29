@@ -5,6 +5,7 @@
 #include "CMap.h"
 #include <string.h>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 CMap::CMap(int capacity) {
@@ -81,5 +82,37 @@ void CMap::depthFirstTraverse(int nodeIndex) {
     }
 }
 
+void CMap::breadthFirstTraverse(int nodeIndex) {
+    cout << m_pNodeArray[nodeIndex].m_cData << " ";
+    m_pNodeArray[nodeIndex].m_bIsVisited = true;
+    
+    vector<int> curVec;
+    curVec.push_back(nodeIndex);
+    breadthFirstTraverseImpl(curVec);
+}
+
+void CMap::breadthFirstTraverseImpl(vector<int> preVec) {
+    vector<int> curVec;
+
+    for (int i = 0; i < preVec.size(); i++) {
+        for (int j = 0; j < m_iCapacity; j++) {
+            int value = 0;
+            getValueFromMatrix(preVec[i], j, value);
+            if (1 == value) {
+                if (m_pNodeArray[j].m_bIsVisited)
+                    continue;
+                else {
+                    cout << m_pNodeArray[j].m_cData << " ";
+                    m_pNodeArray[j].m_bIsVisited = true;
+                    curVec.push_back(j);
+                }
+            } else
+                continue;
+        }
+    }
+
+    if (0 != curVec.size())
+        breadthFirstTraverseImpl(curVec);
+}
 
 
